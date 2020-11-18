@@ -4,6 +4,28 @@
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
+    },
+    "ecommercefunction20f": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "ecommerceapp20f30d45d4a",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "storage",
+          "resourceName": "producttable20f",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   },
   "auth": {
@@ -28,6 +50,22 @@
     "producttable20f": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    }
+  },
+  "api": {
+    "ecommerceapi20f": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "ecommercefunction20f",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   }
 }
