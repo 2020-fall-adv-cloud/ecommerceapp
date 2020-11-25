@@ -51,3 +51,5 @@ const Router = () => {
         </HashRouter>
     );
 }
+
+export default Router;
