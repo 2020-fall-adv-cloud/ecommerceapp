@@ -22,7 +22,7 @@ const checkUser = async (updateUser) => {
         
         // Calling the callback with a non-empty object.    
         updateUser({
-            username: payload['cognito:username']
+            username: payload['email']
             , isAuthorized // isAuthorized: isAuthorized shorthand syntax...
         });
     }
